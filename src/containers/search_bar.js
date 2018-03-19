@@ -12,13 +12,18 @@ export default class SearchBar extends Component{
 
     onInputChange(event){
         console.log(event.target.value);
+        //when use this.setState must bind to this
         this.setState({term:event.target.value});
+    }
+
+    onFormSubmit(event){
+        event.preventDefault();
     }
  
     render(){
         return(
             <div>
-                <form className="input-group">
+                <form onSubmit={this.onFormSubmit} className="input-group">
                     <input 
                         placeholder="Get a five day broadcast in your favorite city"
                         value={this.state.term}
